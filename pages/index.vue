@@ -84,7 +84,7 @@
       <Pagination
         class="mx-auto w-full flex justify-center mt-10"
         :totalItems="data.totalPokemons"
-        :itemsPerPage="10"
+        :itemsPerPage="20"
         :modelValue="page + 1"
         @update="updatePagination"
       />
@@ -118,8 +118,8 @@ const { data, status } = await useAsyncData(
   async () => {
       const res = await $fetch("https://pokeapi.co/api/v2/pokemon", {
       params: {
-        limit: 10,
-        offset: `${page.value}0`,
+        limit: 20,
+        offset: parseInt(`${page.value}0`) * 2,
       },
     });
 
